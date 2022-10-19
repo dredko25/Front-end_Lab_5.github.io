@@ -91,3 +91,33 @@ function Formdata(data){
         alert(`ПІБ: ${datafnm}\nPhone: ${dataPhone}\nID_card: ${dataID_card}\nFaculty: ${dataFaculty}\nBirthday: ${dataBirthday}\n`);
     }
 }
+
+function randomColor(){
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+};
+document.querySelector(".var").onmouseover = function() {
+    this.style.backgroundColor = `${randomColor()}`;
+    
+}
+document.querySelector(".var").onmouseout = function() {
+    this.style.backgroundColor = "";
+}
+document.querySelector("#InputColor").addEventListener("input", function (event) {
+    let valueColor = document.querySelector("#InputColor").value;
+    document.querySelector('.var').onclick = function () {
+        this.style.backgroundColor = `${valueColor}`;
+    };
+    document.querySelector('.var').addEventListener("dblclick", function (e) {
+        this.style.backgroundColor = `${valueColor}`;
+        console.log("dblclick");
+        for(let i = 0; i <= 18; i++){
+            document.querySelectorAll(".col")[i].style.backgroundColor = `${valueColor}`;
+            console.log(`${i}`);
+        }
+    });
+});
